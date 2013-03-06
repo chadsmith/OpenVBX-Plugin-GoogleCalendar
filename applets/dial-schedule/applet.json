@@ -1,0 +1,5 @@
+{
+  "name" : "Dial Schedule",
+  "description" : "Send the call to the scheduled recipient.",
+  "type" : "voice"
+}
