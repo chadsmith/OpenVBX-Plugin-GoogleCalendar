@@ -32,10 +32,10 @@ try {
       $dial_list = array();
       $dialed = 0;
       foreach($events as $event) {
-        preg_match('/DTSTART:(\d{8}T\d{6}Z)/', $event, $start);
-        preg_match('/DTEND:(\d{8}T\d{6}Z)/', $event, $end);
+        preg_match('/DTSTART[:;](?:VALUE=DATE:)?(\d{8}(?:T\d{6}Z)?)/', $event, $start);
+        preg_match('/DTEND[:;](?:VALUE=DATE:)?(\d{8}(?:T\d{6}Z)?)/', $event, $end);
         preg_match('/LOCATION:([^\r\n]+)/', $event, $location);
-        if(time() > strtotime($start[1]) && time() < strtotime($end[1]))
+        if(time() > strtotime($start[1].$start[2]) && time() < strtotime($end[1].$end[2])) {
           $schedule[] = $location[1];
       }
       if(empty($schedule))
