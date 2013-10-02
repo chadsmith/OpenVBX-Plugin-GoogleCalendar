@@ -37,6 +37,7 @@ try {
         preg_match('/LOCATION:([^\r\n]+)/', $event, $location);
         if(time() > strtotime($start[1].$start[2]) && time() < strtotime($end[1].$end[2])) {
           $schedule[] = $location[1];
+        }       
       }
       if(empty($schedule))
         $dialer->unscheduled();
